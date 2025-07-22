@@ -48,12 +48,12 @@ const validateOtp = () => {
         expireOtpElem.innerHTML = '';
 
         otpValidateMsg.innerText = `OTP has been validated successfully`;
-        otpValidateMsg.classList.remove('border', 'border-red-400', 'text-red-400');
-        otpValidateMsg.classList.add('border', 'border-green-400', 'text-green-400');
+        otpValidateMsg.classList.remove('border', 'border-red-400', 'text-red-400', 'mt-10', 'text-xl', 'font-semibold', 'p-2', 'rounded-lg', 'inline-block');
+        otpValidateMsg.classList.add('border', 'border-green-400', 'text-green-400', 'mt-10', 'text-xl', 'font-semibold', 'p-2', 'rounded-lg', 'inline-block');
     } else {
         otpValidateMsg.innerText = `OTP is Invalid`;
-        otpValidateMsg.classList.remove('border', 'border-green-400', 'text-green-400');
-        otpValidateMsg.classList.add('border', 'border-red-400', 'text-red-400');
+        otpValidateMsg.classList.remove('border', 'border-green-400', 'text-green-400', 'mt-10', 'text-xl', 'font-semibold', 'p-2', 'rounded-lg', 'inline-block');
+        otpValidateMsg.classList.add('border', 'border-red-400', 'text-red-400', 'mt-10', 'text-xl', 'font-semibold', 'p-2', 'rounded-lg', 'inline-block');
     }
 };
 
