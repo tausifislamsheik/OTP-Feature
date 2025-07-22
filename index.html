@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="images/security.png" type="image/x-icon">
 </head>
 <body>
-    <section class="text-center mx-auto p-10 text-white rounded-2xl shadow-2xl my-24 bg-linear-to-bl from-pink-700 to-blue-700 w-2/6">
+    <section class="text-center mx-auto p-10 text-white rounded-2xl shadow-2xl my-24 bg-linear-to-bl from-pink-700 to-blue-700 lg:w-2/6">
         <h1 class="text-5xl mb-10">Enter OTP</h1>
         <div id="otp-box-list">
             <input class="w-18 h-18 text-6xl text-center rounded-xl mr-2 font-semibold" type="text" id="otp-box" maxlength="1">
@@ -25,5 +25,8 @@
         <p id="otp-validate-msg" class="mt-10 text-xl font-semibold p-2 rounded-lg inline-block"></p>
         <p id="expired-otp" class="mt-8"></p>
     </section>
+    <div class="text-center">
+        <button id="reset-btn" class="btn bg-linear-to-bl from-blue-700 to-pink-700 px-5 py-3 text-white font-semibold rounded-xl">Reset</button>
+    </div>
 </body>
 </html>

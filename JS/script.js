@@ -78,6 +78,37 @@ const expiredOtp = () => {
     }, totalTime);
 };
 
+
+const resetBtn = document.querySelector('#reset-btn');
+resetBtn.addEventListener('click', () => {
+    // 🔁 Stop any running timers
+    clearInterval(intervalId);
+    clearTimeout(timeoutId);
+
+    // 🔁 Clear OTP input boxes
+    const inputs = document.querySelectorAll('#otp-box-list input');
+    inputs.forEach(input => input.value = '');
+
+    // 🔁 Clear validation message and classes
+    const otpValidateMsg = document.querySelector('#otp-validate-msg');
+    otpValidateMsg.innerText = '';
+    otpValidateMsg.className = ''; // reset all styling
+
+    // 🔁 Clear expiration timer message
+    expireOtpElem.innerHTML = '';
+
+    // 🔁 Reset OTP display with loading animation
+    const otpElem = document.querySelector('#generated-otp');
+    otpElem.innerHTML = `<span class="loading loading-dots loading-lg"></span>`;
+
+    // 🔁 Generate a new OTP
+    generateOtp();
+
+    // 🔁 Focus on the first input box
+    if (inputs[0]) inputs[0].focus();
+});
+
+
 const otpContainer = () => {
     tackleOtpBoxes();
     setTimeout(generateOtp, 2000);
