@@ -24,8 +24,9 @@ const generateOtp = () =>{
     generatedOtp = Math.floor(1000 + Math.random() * 9000);
     const otpElem = document.querySelector('#generated-otp');
     otpElem.innerHTML = `
-          <p>Your OTP : <b class='border p-1 rounded-xl'>${generatedOtp}</b></p>
+          <p>Your OTP : <b>${generatedOtp}</b></p>
     `
+    expiredOtp();
 
 }
 
@@ -41,13 +42,34 @@ const validateOtp = () =>{
     const otpValidateMsg = document.querySelector('#otp-validate-msg');
     if(result){
         otpValidateMsg.innerText = `OTP has been validate successfully`;
-        otpValidateMsg.style.backgroundColor = 'green';
-        
+        otpValidateMsg.classList.remove('border','border-red-400','text-red-400');
+        otpValidateMsg.classList.add('border','border-green-400','text-green-400');
     }else{
         otpValidateMsg.innerText = `OTP is Invalid`;
-        otpValidateMsg.style.backgroundColor = 'red';
+        otpValidateMsg.classList.remove('border','border-green-400','text-green-400');
+        otpValidateMsg.classList.add('border','border-red-400','text-red-400');
     }
 }
+
+const expireOtpElem = document.querySelector('#expired-otp');
+
+const expiredOtp = () =>{
+    const totalTime = 15000;
+    const interval = 1000;
+
+    let slice = totalTime / interval;
+
+    const setInter = setInterval(() =>{
+      expireOtpElem.innerHTML = `<p class='bg-white text-black inline-block p-2 rounded-lg'>Your OTP will expire <span class='text-red-600 font-bold'>${slice}</span> seconds</p>`;
+      slice = slice - 1 ;
+    },interval);
+    setTimeout(() => {
+        expireOtpElem.innerHTML = `<p class='bg-white inline-block p-2 text-red-500 font-bold rounded-lg'>OTP Expired</p>`
+        clearInterval(setInter);
+        generateOtp();
+    }, totalTime);
+}
+
 
 const otpContainer = () =>{
   tackleOtpBoxes();
